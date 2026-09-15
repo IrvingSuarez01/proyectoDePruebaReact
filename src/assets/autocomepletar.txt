@@ -1,0 +1,12 @@
+
+    "editor.quickSuggestions": {
+        "other": "off",
+        "comments": "off",
+        "strings": "off"
+    },
+    "editor.suggestOnTriggerCharacters": false,
+    "editor.parameterHints.enabled": false,
+    "editor.wordBasedSuggestions": "off"
+
+
+    https://www.youtube.com/watch?v=LuM5c_f6nUE
