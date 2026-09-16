@@ -1,13 +1,13 @@
 
 import './App.css';
-import ListMateriasComponent from './components/ListaMaterias';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+//import ListMateriasComponent from './components/ListaMaterias';
+//import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 
 
 function App() {
 
-  return (
+  return (/*
     <div>
       <BrowserRouter>
       <div className='container'>
@@ -18,7 +18,7 @@ function App() {
       </div>
       </BrowserRouter>
     </div>
-
+*/null
   );
 }
 export default App;
