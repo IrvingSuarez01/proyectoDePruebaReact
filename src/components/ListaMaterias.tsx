@@ -35,9 +35,8 @@ const ListMateriasComponent = () => {
 
 
     return(
-            <div className='container'>
-                <h2 className='text-center'>Lista de Materias</h2>
-
+         <div className='container'>
+            <h2 className='text-center'>Lista de Materias</h2>
                 <table className='table table-bordered table-striped'>
                     <thead>
                         <tr>
@@ -57,9 +56,7 @@ const ListMateriasComponent = () => {
                         ))}
                     </tbody>
                 </table>
-                <Link to="/" className="btn btn-info">
-                    Volver a la página principal
-                </Link>
+            <Link to="/" className="btn btn-info">Volver a la página principal</Link>
         </div>           
     );
 };

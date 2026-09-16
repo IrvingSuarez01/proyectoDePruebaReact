@@ -5,7 +5,7 @@ import viteLogo from '../assets/vite.svg'
 import { Link } from 'react-router-dom'
 
 
-function PaguinaPrincipal () {
+function PaginaPrincipal () {
 
     const [count, setCount] = useState(0)
 
@@ -128,4 +128,4 @@ function PaguinaPrincipal () {
     );
 };
 
-export default PaguinaPrincipal;
+export default PaginaPrincipal;

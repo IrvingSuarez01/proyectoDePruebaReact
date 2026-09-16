@@ -7,8 +7,8 @@ import App4 from './App.tsx'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-        <BrowserRouter>
-          <App4 />
-        </BrowserRouter>
+    <BrowserRouter>
+      <App4 />
+    </BrowserRouter>
   </StrictMode>,
 )
