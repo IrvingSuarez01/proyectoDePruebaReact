@@ -11,7 +11,8 @@ function App() {
       <Routes>
         <Route path='/materias' element={<ListMateriasComponent />}></Route>
         <Route path='/' element={<PaginaPrincipal/>}></Route>
-      </Routes>     
+      </Routes>
+           
     </>
   )
 }
