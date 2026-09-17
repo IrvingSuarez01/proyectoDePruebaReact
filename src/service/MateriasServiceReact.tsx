@@ -7,7 +7,13 @@ class MateriaServiceReact
   getAllMaterias()
   {
     return axios.get(API_URL);
-  }  
+  }
+  
+  
+  getMateriaById(id:string) 
+  {
+    return axios.get(`${API_URL}/${id}`);
+  }
 }
 
 export default new MateriaServiceReact();
