@@ -14,6 +14,11 @@ class MateriaServiceReact
   {
     return axios.get(`${API_URL}/${id}`);
   }
+
+  getMateriaByName(nombre:string) 
+  {
+    return axios.get(`${API_URL}/buquedaNombre/${nombre}`);
+  }
 }
 
 export default new MateriaServiceReact();

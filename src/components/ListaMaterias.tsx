@@ -9,8 +9,8 @@ import MateriasServiceReact from '../service/MateriasServiceReact';
 const ListMateriasComponent = () => {
 
     const [cMaterias, setCMateias] = useState<InterfaceMateria[]>([]);
-    const currentMaterias = cMaterias.slice(1, 100);
     const [searchId, setSearchId] = useState('');
+    const [searchNombre, setSearchNombre] = useState('');
 
 
     interface InterfaceMateria {
@@ -20,10 +20,9 @@ const ListMateriasComponent = () => {
     }
 
     useEffect(() => {
-           console.log("UseEffect nuevo valor:", cMaterias);
-        listarMaterias();
-            
-        //const intervalo = setInterval(() => { listarMaterias(); }, 10000);
+
+        listarMaterias();            
+        //const intervalo = setInterval(() => { listarMaterias(); }, 5000);
         //return () => clearInterval(intervalo);
     }, []);
 
@@ -41,32 +40,44 @@ const ListMateriasComponent = () => {
     const handleSearch = () => {
         debugger;
         if (searchId === '') {
-            alert('Por favor ingresa un ID de materia');
+            listarMaterias();
             return;
         }
         MateriasServiceReact.getMateriaById(searchId)
             .then(response => {
-                const materiaList = response.data;
-                console.log("response.data =", response.data);
-                //SALIDA EN CONSOLA response.data = Object { id: 1, nombre: "ciencias naturales", creditosNecesarios: 100 }
-                console.log("Array:", [response.data]);               
-                // SALIDA EN LA CONSLA Array: Array [ {…} ]
-
-                if (materiaList) {
-                    setCMateias([response.data])
-                    console.log('Valor de cMaterias en debugger'+ cMaterias);
-                    //SALIDA EN LA CONSOLA Valor de cMaterias en debugger[object Object],[object Object],[object Object],[object Object],[object Object]
-                    
-                } else {
-                    alert('Materia no encontrada');
-                }
+              setCMateias([response.data])
             })
-            .catch(error => {
+            .catch(error => {               
+                if (error.response?.status === 404) {
+                setCMateias([]);
+            }
+            else {       
                 console.error('Error fetching materias:', error);
                 alert('Error al buscar la materia');
+            }
             });
         };
 
+        const handleSearchNombre = () => {
+        debugger;
+        if (searchNombre === '') {
+            listarMaterias();
+            return;
+        }
+        MateriasServiceReact.getMateriaByName(searchNombre)
+            .then(response => {
+              setCMateias(response.data)
+            })
+            .catch(error => {               
+                if (error.response?.status === 404) {
+                setCMateias([]);
+            }
+            else {       
+                console.error('Error fetching materias:', error);
+                alert('Error al buscar la materia');
+            }
+            });
+        };
 
     return(
          
@@ -81,11 +92,20 @@ const ListMateriasComponent = () => {
                 <div className='row mb-3'>
                     <div className='col-md-4'>
                         <input type='text' className='form-control'  placeholder='Buscar materia por ID' value={searchId}
-                            onChange={(e) => setSearchId(e.target.value)}
-                        />
+                            onChange={(e) =>{setSearchId(e.target.value.replace(/[^0-9]/g, ''))}}/>
                     </div>
                     <div className='col-md-2'>
                         <button className='btn btn-primary' onClick={handleSearch}>Buscar</button>
+                    </div>
+                </div>
+
+                <div className='row mb-3'>
+                    <div className='col-md-4'>
+                        <input type='text' className='form-control'  placeholder='Buscar materia por nombre' value={searchNombre}
+                            onChange={(e) =>{setSearchNombre(e.target.value.replace(/[^a-zA-Z0-9]/g, ''))}}/>
+                    </div>
+                    <div className='col-md-2'>
+                        <button className='btn btn-primary' onClick={handleSearchNombre}>Buscar</button>
                     </div>
                 </div>
 
@@ -99,7 +119,7 @@ const ListMateriasComponent = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {currentMaterias.map(cMaterias => (
+                        {cMaterias.map(cMaterias => (
                             <tr className='bg-success' key={cMaterias.id}>
                                 <td>{cMaterias.id}</td>
                                 <td>{cMaterias.nombre}</td>   
