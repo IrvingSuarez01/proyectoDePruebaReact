@@ -3,12 +3,14 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter } from 'react-router-dom';
-import App4 from './App.tsx'
+import App from './App.tsx'
+import HeaderComponent from './components/HeaderComponent.tsx';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <BrowserRouter>
-      <App4 />
+    <HeaderComponent />
+      <App />
     </BrowserRouter>
   </StrictMode>,
 )

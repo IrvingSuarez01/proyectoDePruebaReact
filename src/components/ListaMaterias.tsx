@@ -35,10 +35,16 @@ const ListMateriasComponent = () => {
 
 
     return(
-         <div className='container'>
-            <h2 className='text-center'>Lista de Materias</h2>
-                <table className='table table-bordered table-striped'>
-                    <thead>
+         
+        <div>
+            <div className='text-end'>
+                <Link to="/" className="btn btn-secondary">Volver a la página principal</Link>
+            </div>
+            <div className='container'>
+            <h2 className='text-center'>Materias</h2>
+             <p>Lista de materias encontradas...</p>
+                <table className='table table-sm table-bordered  table-hover'>
+                    <thead >
                         <tr>
                             <th>#</th>
                             <th>Materia</th> 
@@ -47,17 +53,18 @@ const ListMateriasComponent = () => {
                     </thead>
                     <tbody>
                         {currentMaterias.map(cMaterias => (
-                            <tr key={cMaterias.id}>
+                            <tr className='bg-success' key={cMaterias.id}>
                                 <td>{cMaterias.id}</td>
                                 <td>{cMaterias.nombre}</td>   
                                 <td>{cMaterias.creditosNecesarios}</td>                              
-                            </tr>
-                            
+                            </tr>                            
                         ))}
                     </tbody>
                 </table>
-            <Link to="/" className="btn btn-info">Volver a la página principal</Link>
-        </div>           
+                <br/>
+            </div>
+        </div>
+                 
     );
 };
 
