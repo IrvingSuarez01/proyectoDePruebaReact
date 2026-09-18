@@ -1,5 +1,6 @@
 import {useEffect, useState} from 'react';
 import MateriasServiceReact from '../service/MateriasServiceReact';
+import { Link } from 'react-router-dom';
 //import { Link } from 'react-router-dom';
 
 
@@ -129,6 +130,7 @@ const ListMateriasComponent = () => {
                     </tbody>
                 </table>
                 <h3>Total materias: {cMaterias.length}</h3>
+                <Link to="/addMateria" className='btn btn-secondary mb-2'>Agregar Materia</Link>
                 <br/>
             </div>
         </div>
