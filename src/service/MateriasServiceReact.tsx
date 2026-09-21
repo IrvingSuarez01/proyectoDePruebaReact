@@ -29,8 +29,8 @@ class MateriaServiceReact
         });
     }
 
-    updateMateria(materia: InterfaceMateria) {
-        return axios.put(`${API_URL}/`, materia, {
+    updateMateria(id: number, materia: InterfaceMateria) {
+        return axios.put(`${API_URL}/${id}`, materia, {
             headers: {
                 'Content-Type': 'application/json'
             }

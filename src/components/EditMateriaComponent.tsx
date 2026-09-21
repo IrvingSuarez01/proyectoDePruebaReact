@@ -1,24 +1,47 @@
 import { useState, useEffect } from 'react';
 import MateriaService from '../service/MateriasServiceReact';
-import { Link, useNavigate} from 'react-router-dom';
+import { Link, useNavigate, useParams} from 'react-router-dom';
 
 
-export const AddMateriaComponent = () => {
-    const idMateria = 0;
+export const EditMateriaComponent = () => {
     const [nombre, setCNombre] = useState("");
     const [creditosNecesarios, setCCreditosNecesarios] = useState(0);
     const navigate = useNavigate();
+    const { id } = useParams();
+    const idMateria = Number(id);
+    
+
+    useEffect(() => {
+
+    if (id) {
+
+        MateriaService.getMateriaById(id)
+            .then((response) => {
+
+                setCNombre(response.data.nombre);
+                setCCreditosNecesarios(
+                    response.data.creditosNecesarios
+                );
+
+            })
+            .catch(error => {
+                console.log(error);
+            });
+    }
+
+}, [id]);
 
 
-    const saveMateria = (e: React.FormEvent) =>
+    const updateMateria = (e: React.FormEvent) =>
     {
+
         e.preventDefault();
         const materia = {
             idMateria,  
             nombre,
             creditosNecesarios};          
-
-            MateriaService.createMateria(materia).then((response) => {
+    
+            MateriaService.updateMateria(idMateria, materia).then((response) => {
                 console.log(response);
                 navigate("/Materias");
             }).catch(error => {
@@ -32,15 +55,15 @@ export const AddMateriaComponent = () => {
             <div className='container'>
                 <div className='row'>
                     <div className='card col-md-6 offset-md-3'>
-                        <h2 className='text-center'>Crear Materia</h2>
+                        <h2 className='text-center'>Actualizar Materia</h2>
                         <div className='card-body'>
-                            <form onSubmit={saveMateria}>
+                            <form onSubmit={updateMateria}>
 
                                 <div className='row mb-2'>
                                     <label className='col-md-3' >Nombre</label>
                                     <div className='col-md-9'>
                                     <input type='text' className='form-control ' placeholder='Ingrese el nombre de la materia'
-                                        onChange={(e) => setCNombre(e.target.value)} />
+                                         value={nombre} onChange={(e) => setCNombre(e.target.value)} />
                                     </div>
                                 </div>
 
@@ -48,7 +71,7 @@ export const AddMateriaComponent = () => {
                                     <label className='col-md-3'>Créditos</label>
                                     <div className='col-md-9'>
                                         <input type='text' placeholder='Ingrese número de créditos necesarios'
-                                            className='form-control'
+                                            className='form-control' value={creditosNecesarios}
                                             onChange={(e) => setCCreditosNecesarios(Number(e.target.value))}
                                         />
                                     </div>
@@ -67,4 +90,4 @@ export const AddMateriaComponent = () => {
     )
 }
 
-export default AddMateriaComponent;
+export default EditMateriaComponent;

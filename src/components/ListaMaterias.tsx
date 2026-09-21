@@ -100,7 +100,7 @@ const ListMateriasComponent = () => {
                     </div>
                 </div>
 
-                <div className='row mb-3'>
+                <div className='row'>
                     <div className='col-md-4'>
                         <input type='text' className='form-control'  placeholder='Buscar materia por nombre' value={searchNombre}
                             onChange={(e) =>{setSearchNombre(e.target.value.replace(/[^a-zA-Z0-9]/g, ''))}}/>
@@ -108,15 +108,20 @@ const ListMateriasComponent = () => {
                     <div className='col-md-2'>
                         <button className='btn btn-primary' onClick={handleSearchNombre}>Buscar</button>
                     </div>
+                    <div className='col-md-1 offset-md-5 mb-3 d-flex align-items-center'>
+                        <Link to="/addMateria" className='btn btn-primary'>+</Link>
+                    </div>
                 </div>
-
+                
+                
 
                 <table className='table table-sm table-bordered  table-hover'>
                     <thead >
                         <tr>
                             <th>#</th>
                             <th>Materia</th> 
-                            <th>Creditos necesarios</th>                         
+                            <th>Creditos necesarios</th>
+                            <th>Acciones</th>                         
                         </tr>
                     </thead>
                     <tbody>
@@ -124,13 +129,18 @@ const ListMateriasComponent = () => {
                             <tr className='bg-success' key={cMaterias.id}>
                                 <td>{cMaterias.id}</td>
                                 <td>{cMaterias.nombre}</td>   
-                                <td>{cMaterias.creditosNecesarios}</td>                              
+                                <td>{cMaterias.creditosNecesarios}</td>
+                                    <td>
+                                        <Link to={`/editMateria/${cMaterias.id}`} 
+                                            className="btn btn-warning btn-sm">
+                                            <i className="bi-gear-fill"></i> 
+                                        </Link>
+                                    </td>                     
                             </tr>                            
                         ))}
                     </tbody>
                 </table>
                 <h3>Total materias: {cMaterias.length}</h3>
-                <Link to="/addMateria" className='btn btn-secondary mb-2'>Agregar Materia</Link>
                 <br/>
             </div>
         </div>
