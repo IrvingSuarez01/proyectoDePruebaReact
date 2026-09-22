@@ -1,5 +1,5 @@
 import {useEffect, useState} from 'react';
-import MateriasServiceReact from '../service/MateriasServiceReact';
+import MateriasServiceReact from '../../service/MateriasServiceReact';
 import { Link } from 'react-router-dom';
 //import { Link } from 'react-router-dom';
 

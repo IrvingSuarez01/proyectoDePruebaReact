@@ -29,13 +29,19 @@ class MateriaServiceReact
         });
     }
 
-    updateMateria(id: number, materia: InterfaceMateria) {
+  updateMateria(id: number, materia: InterfaceMateria) {
         return axios.put(`${API_URL}/${id}`, materia, {
             headers: {
                 'Content-Type': 'application/json'
             }
         });
-    }
+  }
+
+  deleteMateriaById(id:number) 
+  {
+    return axios.delete(`${API_URL}/${id}`);
+  }
+
 
 }
 

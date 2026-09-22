@@ -1,9 +1,9 @@
 import './App.css'
-import ListMateriasComponent from './components/ListaMaterias';
+import ListMateriasComponent from './components/materia/ListaMaterias';
 import { Route, Routes } from 'react-router-dom';
-import PaginaPrincipal from './components/PaginaPrincipal'
-import AddMateriaComponent from './components/AddMateriaComponent';
-import EditMateriaComponent from './components/EditMateriaComponent';
+import PaginaPrincipal from './components/common/PaginaPrincipal'
+import AddMateriaComponent from './components/materia/AddMateriaComponent';
+import EditMateriaComponent from './components/materia/EditMateriaComponent';
 
 
 function App() {

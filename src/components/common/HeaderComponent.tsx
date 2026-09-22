@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import heroImg from '../assets/hero.png'
+import heroImg from '../../assets/hero.png'
 
 export const HeaderComponent = () => {
   return (

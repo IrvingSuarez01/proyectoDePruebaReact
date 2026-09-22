@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
-import MateriaService from '../service/MateriasServiceReact';
+import { useState } from 'react';
+import MateriaService from '../../service/MateriasServiceReact';
 import { Link, useNavigate} from 'react-router-dom';
 
 
@@ -27,6 +27,8 @@ export const AddMateriaComponent = () => {
     }   
     
 
+
+
     return (
         <div>
             <div className='container'>
@@ -39,7 +41,7 @@ export const AddMateriaComponent = () => {
                                 <div className='row mb-2'>
                                     <label className='col-md-3' >Nombre</label>
                                     <div className='col-md-9'>
-                                    <input type='text' className='form-control ' placeholder='Ingrese el nombre de la materia'
+                                    <input type='text' className='form-control ' placeholder='Ingrese el nombre de la materia' required
                                         onChange={(e) => setCNombre(e.target.value)} />
                                     </div>
                                 </div>
@@ -47,7 +49,7 @@ export const AddMateriaComponent = () => {
                                 <div className='row mb-2'>
                                     <label className='col-md-3'>Créditos</label>
                                     <div className='col-md-9'>
-                                        <input type='text' placeholder='Ingrese número de créditos necesarios'
+                                        <input type='text' placeholder='Ingrese número de créditos necesarios' required
                                             className='form-control'
                                             onChange={(e) => setCCreditosNecesarios(Number(e.target.value))}
                                         />
